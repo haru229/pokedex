@@ -55,13 +55,14 @@ class Detailpokemon extends StatelessWidget {
             child: Container(
               height:150,
               child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.fromLTRB(260,0,0,0),
                   itemCount: pokemon.types.length,
                   itemBuilder: (context, index) {
+                    
                     return Container(
                       alignment: Alignment.center,
-
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.symmetric(horizontal: 300,vertical: 1),
+                      margin: EdgeInsets.symmetric(horizontal: 10,vertical: 50),
                       
                       child: Text(pokemon.types[index].type.name,style: TextStyle(color: Colors.white,fontSize: 30),),
                       decoration: BoxDecoration(

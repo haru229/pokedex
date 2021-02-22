@@ -90,10 +90,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      
       home: HomeP()
-      
-      
     );
   }
 }
@@ -115,8 +112,6 @@ Future<List<Pokemons>> _fetchData() async{
     _fetchData();
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
