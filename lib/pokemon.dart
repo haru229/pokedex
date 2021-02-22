@@ -1,21 +1,21 @@
 import 'dart:convert';
 class Pokemons {
-  List<BasePokemon> pokemob = [];
+  List<Base> pokemob = [];
 
 
   Pokemons.fromJson(List<dynamic> json) {
     if (json == null) return;
 
     json.forEach((item) {
-      final pokemon = BasePokemon.fromJson(item);
+      final pokemon = Base.fromJson(item);
       pokemob.add(pokemon);
     });
   }
 }
 
-class BasePokemon {
+class Base {
   
-  BasePokemon({
+  Base({
     this.name,
     this.url,
   });
@@ -24,8 +24,8 @@ class BasePokemon {
   String url;
 
 
-  factory BasePokemon.fromJson(Map<String, dynamic> json) {
-    return BasePokemon(
+  factory Base.fromJson(Map<String, dynamic> json) {
+    return Base(
       name: json["name"],
       url: json["url"],
     );
@@ -119,15 +119,12 @@ class Stat {
 }
 
 class Type {
-  int slot;
   Species type;
 
   Type({
-    this.slot,
     this.type,
   });
-  factory Type.fromJson(Map<String, dynamic> json) => Type(
-    slot: json["slot"],
+  factory Type.fromJson(Map<String, dynamic> json) => Type( 
     type: Species.fromJson(json["type"]),
   );
 }

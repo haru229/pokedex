@@ -50,8 +50,8 @@ class _PokeCardState extends State<Cards> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
       child:  Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(350)
+            shape: StadiumBorder(
+              side:BorderSide(color:Colors.blueGrey[900], width:8)
             ),
             color: Colors.blueGrey,
             child: InkWell(
@@ -64,14 +64,14 @@ class _PokeCardState extends State<Cards> {
                 mainAxisAlignment: MainAxisAlignment.center ,
                 children: [
                   Image.network(pokemon.sprites.frontDefault,
-                    width: 150,
+                    width: 140,
                     fit: BoxFit.fill,
 
                   ),
 
                   Text(pokemon.name,
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 2 ),)
@@ -108,8 +108,8 @@ Future<List<Pokemons>> _fetchData() async{
    print(data.pokemob);
     setState(() {
       pokemons = data;
-
     });
+    return _fetchData();
   }
   void initState(){
     _fetchData();
