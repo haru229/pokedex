@@ -35,7 +35,7 @@ class Detailpokemon extends StatelessWidget {
               ),)
             ],
           ),
-          SizedBox(height: 0),
+          
           Text(pokemon.name,
             style: TextStyle(
                 fontWeight: FontWeight.bold,

@@ -14,13 +14,15 @@ class Pokemons {
 }
 
 class BasePokemon {
-  String name;
-  String url;
-
+  
   BasePokemon({
     this.name,
     this.url,
   });
+  
+  String name;
+  String url;
+
 
   factory BasePokemon.fromJson(Map<String, dynamic> json) {
     return BasePokemon(
@@ -35,17 +37,8 @@ class BasePokemon {
 Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
 
 class Pokemon {
-  int id;
-  String name;
-  Sprites sprites;
-  List<Stat> stats;
-  List<Type> types;
-  List<Ability> abilities;
-  int weight;
-  int height;
-
-
-  Pokemon({
+   
+    Pokemon({
     this.id,
     this.name,
     this.weight, 
@@ -53,9 +46,15 @@ class Pokemon {
     this.sprites,
     this.stats,
     this.types,
-    this.abilities,
-
   });
+  
+  int id;
+  String name;
+  Sprites sprites;
+  List<Stat> stats;
+  List<Type> types;
+  int weight;
+  int height;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
     id: json["id"],
@@ -65,25 +64,9 @@ class Pokemon {
     stats: List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
     types: List<Type>.from(json["types"].map((x) => Type.fromJson(x))),
     sprites: Sprites.fromJson(json["sprites"]),
-    abilities: List<Ability>.from(
-      json["abilities"].map((x) => Ability.fromJson(x)),
-    ),
-  );
-}
-
-class Ability {
-  Species abilities;
-
-
-  Ability({
-    this.abilities,
-  });
-
-  factory Ability.fromJson(Map<String, dynamic> json) => Ability(
-    abilities: Species.fromJson(json["ability"]),
   );
 
- 
+
 }
 
 class Species {
@@ -106,8 +89,6 @@ class Species {
   };
 }
 
-
-
 class Sprites {
   String backDefault;
   String frontDefault;
@@ -121,28 +102,20 @@ class Sprites {
     backDefault: json["back_default"],
     frontDefault: json["front_default"],
   );
-
- 
 }
 
 class Stat {
   int status;
-  int effort;
   Species stat;
-
   Stat({
     this.status,
-    this.effort,
     this.stat,
   });
 
   factory Stat.fromJson(Map<String, dynamic> json) => Stat(
     status: json["base_stat"],
-    effort: json["effort"],
     stat: Species.fromJson(json["stat"]),
   );
-
-  
 }
 
 class Type {
@@ -153,11 +126,8 @@ class Type {
     this.slot,
     this.type,
   });
-
   factory Type.fromJson(Map<String, dynamic> json) => Type(
     slot: json["slot"],
     type: Species.fromJson(json["type"]),
   );
-
-  
 }

@@ -9,11 +9,19 @@ void main() {
   runApp(MyApp());
 }
 
+class HomeP extends StatefulWidget {
+  static const String url =  'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0';
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
 class Cards extends StatefulWidget {
 
   const Cards({Key key , this.pokeURL}) : super(key: key);
   final String pokeURL;
-
+  
+ 
   @override
   _PokeCardState createState() => _PokeCardState();
 }
@@ -30,6 +38,8 @@ class _PokeCardState extends State<Cards> {
     });
   }
 
+
+
   void initState(){
     _fetchData();
     super.initState();
@@ -41,7 +51,7 @@ class _PokeCardState extends State<Cards> {
       padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
       child:  Card(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(350)
             ),
             color: Colors.blueGrey,
             child: InkWell(
@@ -54,14 +64,14 @@ class _PokeCardState extends State<Cards> {
                 mainAxisAlignment: MainAxisAlignment.center ,
                 children: [
                   Image.network(pokemon.sprites.frontDefault,
-                    width: 300,
+                    width: 150,
                     fit: BoxFit.fill,
 
                   ),
 
                   Text(pokemon.name,
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 2 ),)
@@ -72,22 +82,20 @@ class _PokeCardState extends State<Cards> {
 
 class MyApp extends StatelessWidget {
   @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: "Pokedex",
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: HomeP(),
+      
+      home: HomeP()
+      
+      
     );
   }
-}
-  
-class HomeP extends StatefulWidget {
-  static const String url =  'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0';
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<HomeP> {
@@ -125,7 +133,7 @@ Future<List<Pokemons>> _fetchData() async{
               child: CircularProgressIndicator(),
             )
                 : GridView.count(
-                  crossAxisCount : 1,
+                  crossAxisCount : 3,
               children: List.generate(pokemons.pokemob.length,
                       (index) =>
                           Cards(
